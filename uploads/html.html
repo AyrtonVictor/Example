@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio JavaScript</title>
+    <script type="text/javascript">
+
+        class User {
+            user;
+            pass;
+            nombre;
+            rol;
+        }         
+
+        class Rol {
+            descrip;
+            nivel;
+        }
+
+        function getobject(operacion) {
+            var n1 = document.getElementById('user').value;
+            var n2 = document.getElementById('pass').value;
+            var n3 = document.getElementById('nom').value;
+
+            let rol1 = new Rol();
+            rol1.descrip = "Administrador";
+            rol1.nivel = 1;
+
+            let us1 = new User();
+            us1.user = n1;
+            us1.pass = n2;
+            us1.nombre = n3;
+            us1.rol = rol1;
+
+            switch (operacion) {
+                case 1:
+                    document.getElementById('resultado').innerText = 'Usuario: ' + us1.user + " Rol: " + us1.rol.descrip;
+                    break;
+                case 2:
+                    document.getElementById('resultado').innerText = JSON.stringify(us1);
+                    break;
+                
+                default:
+                    break;
+            }
+            
+        }
+
+
+    </script>
+</head>
+<body>
+
+    <input type="text" id="user" placeholder="Ingrese Usuario" />
+    <input type="text" id="pass" placeholder="Ingrese Password" />
+    <input type="text" id="nom" placeholder="Ingrese Nombre" />
+    <p />
+    <input type="button" value="Atributo" onclick="getobject(1)" />
+    <input type="button" value="Convertir a JSON" onclick="getobject(2)" />
+    <p />
+
+    <div id="resultado" />
+
+</body>
+</html>
